@@ -1,0 +1,50 @@
+<!-- schedule.html -->
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Schedule Pickup</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        {%include 'navbar.html' %}
+        <br>
+    </header>
+    {%if request.user.is_authenticated %}
+    <div class="container">
+        <h1>Schedule Pickup</h1>
+        <form method="post" enctype="multipart/form-data" action="{% url 'schedule' %}">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="scrap_type">Scrap Type</label>
+                <input type="text" class="form-control" id="scrap_type" name="scrap_type" required>
+            </div>
+            <div class="form-group">
+                <label for="scrap_weight">Scrap Weight (in kg)</label>
+                <input type="number" class="form-control" id="scrap_weight" name="scrap_weight" required>
+            </div>
+            <div class="form-group">
+                <label for="scrap_image">Scrap Image</label>
+                <input type="file" class="form-control-file" id="scrap_image" name="scrap_image" required>
+            </div>
+            <div class="form-group">
+                <label for="pickup_date">Pickup Date</label>
+                <input type="date" class="form-control" id="pickup_date" name="pickup_date" required>
+            </div>
+            <div class="form-group">
+                <label for="pickup_time">Pickup Time</label>
+                <input type="time" class="form-control" id="pickup_time" name="pickup_time" required>
+            </div>
+            <div class="form-group">
+                <label for="pickup_address">Pickup Address</label>
+                <textarea class="form-control" id="pickup_address" name="pickup_address" rows="3" required></textarea>
+            </div>
+           
+            <button type="submit" class="btn btn-primary">Schedule Pickup</button>
+        </form>
+    </div>
+    {% endif %}
+</body>
+</html>

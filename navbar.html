@@ -1,0 +1,64 @@
+{%load static%}
+{%static "images" as baseUrl%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCRAP EASY</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+</head>
+<!--style>
+@media (max-width: 600px) {
+    .logo {
+      text-align: center;
+    }
+  
+    nav ul {
+      display: none;
+    }
+  
+    nav ul li {
+      display: block;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  
+    nav ul li a {
+      padding: 5px 10px;
+      background-color: #f0f0f0;
+      color: #333;
+      border-radius: 5px;
+    }
+  
+    nav ul li a:hover {
+      background-color: #ddd;
+    }
+  }
+</style-->
+<body>
+    <nav style="background-color: white; position:relative;">
+        <div class="logo">
+            <li style="float:left"><a href="/accounts/index"><img src="{%static 'images/logo.png'%}" width="80px"></a></li>
+        </div>
+        <ul>
+            <li><a href='/loading'>Locate</a></li>
+            <li><a href='/accounts/rates'>rates</a></li>
+            <li><a href="{% url 'schedule' %}">Schedule</a></li>
+            
+            <li><a href='/loading'>Learn</a></li>
+            {%if user.is_authenticated%}
+            <li><a href="{% url 'profile' %}">Profile</a></li> 
+            <li> Hello, {{user.first_name}}</li>
+            <li><a href="/accounts/logout">logout</a></li>
+            
+            {%else%}
+            <li><a href='/accounts/login'>login/signup</a></li>
+            {%endif%}
+        </ul>
+    </nav>
+    
+</body>
+</html>

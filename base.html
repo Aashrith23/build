@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+    
+    /* Use a media query to add a breakpoint at 800px: */
+    @media screen and (max-width: 800px) {
+        .hi{
+        width:  100%; /* The width is 100%, when the viewport is 800px or smaller */
+        }
+    }
+</style>
+<body class="hi">
+    {% block content %}
+
+    {% endblock %}
+    
+</body>
+</html>

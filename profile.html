@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+<!-- profile.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profile Page</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+</head>
+<header>
+  {%include 'navbar.html'%}
+  
+</header>
+<body>
+  <div class="container">
+    <div class="profile-header">
+      <img class="profile-picture" src="{% static 'images/image.jpg' %}" alt="Profile Picture">
+      <h1 class="profile-name">{{user.first_name}}</h1>
+    </div>
+    <div class="profile-content">
+      <!-- Add your profile content here -->
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor sem ac nibh cursus, id rhoncus urna ultricies.</p>
+    </div>
+  </div>
+  <h1>Welcome to your profile</h1>
+  <h2>Profile Details</h2>
+  <p>Username: {{ request.user.username }}</p>
+  <!-- profile.html -->
+  {% for pickup in object_list %}
+  <div>
+    <h3>{{ pickup.scrap_type }}</h3>
+    <p>Weight: {{ pickup.scrap_weight }}</p>
+    <p>Date: {{ pickup.pickup_date }}</p>
+    <!-- Add more fields as needed -->
+  </div>
+{% endfor %}
+  
+</body>
+</html>
+
+{%endblock%}
